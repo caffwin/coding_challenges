@@ -1,0 +1,6 @@
+a=n
+c=x
+g=p
+f=s
+n=r
+The quick brown fox jumps over the lazy dog
