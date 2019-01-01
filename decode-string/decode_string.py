@@ -7,15 +7,19 @@
 # Empty lines
 # What if there is more than one phrase to be translated?
 
-decode_list = []
-translate_this_phrase = ""
-
-translate_dict = {}
-new_phrase = []
+# decode_list = []
+# translate_this_phrase = ""
+# translate_dict = {}
+# new_phrase = []
 
 # When using interactive python mode: decode_string("decode_string.txt")
 
 def decode_string(file): 
+    decode_list = []
+    translate_this_phrase = ""
+    translate_dict = {}
+    new_phrase = []
+
 
     for row in open(file):
         stripped_row = row.rstrip("\n")
