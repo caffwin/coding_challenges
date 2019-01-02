@@ -7,19 +7,13 @@
 # Empty lines
 # What if there is more than one phrase to be translated?
 
-# decode_list = []
-# translate_this_phrase = ""
-# translate_dict = {}
-# new_phrase = []
-
 # When using interactive python mode: decode_string("decode_string.txt")
 
 def decode_string(file): 
-    decode_list = []
+
     translate_this_phrase = ""
     translate_dict = {}
     new_phrase = []
-
 
     for row in open(file):
         stripped_row = row.rstrip("\n")
@@ -40,3 +34,28 @@ def decode_string(file):
         new_string = "".join(new_phrase)
 
     return new_string
+
+def decode_string_refactored(file):
+
+    translate_letters = {}
+    translated_list = []
+    
+    for line_content in file_contents:
+        if "=" in line_content:
+            first, second = line_content.split("=")
+            translate_letters[first] = second
+            
+        else: 
+            for letter in line_content:
+                new_phrase = []
+                if letter in translate_letters:
+                    new_phrase.append(translation_letters[letter])
+                else: 
+                    new_phrase.append(letter)            
+
+            translated_list.append("".join(new_phrase)) 
+            
+    return translated_list
+
+
+# def decode_things(file):
