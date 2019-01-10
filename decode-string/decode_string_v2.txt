@@ -1,8 +1,13 @@
 
-
 PHONE=1-888-723-8881
 
-X=Yy
 Y=Xb
+X=Yy
 Z=Z
 
+NAME=Catherine
+BIRTH_MONTH=November
+BIRTH_DAY_OF_MONTH=29
+BIRTHDAY=BIRTH_MONTH BIRTH_DAY_OF_MONTH
+
+Hey NAME, your birthday is BIRTHDAY and your phone number is PHONE

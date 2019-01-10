@@ -58,4 +58,6 @@ def decode_string_refactored(file):
     return translated_list
 
 
-# def decode_things(file):
+def decode_things(file):
+    # Do something similar with consideration of cyclic translations and
+    # translating one variable into two pre-existing variables
