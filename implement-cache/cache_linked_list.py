@@ -42,6 +42,7 @@ class LinkedList(object):
     
     def add_node(self, data):
         # Remember order of pointer reassignment
+        # 
         new_node = Node(data) 
         # current = self.head 
 
@@ -53,8 +54,19 @@ class LinkedList(object):
         while current is not None: # while node exists
             # loop until next is null
             current = current.next
-            
+
         current.next = new_node
+
+    def add_node_position(self, previous, data):
+        # Inserts node after node with given data
+        previous = None
+        new_node = Node(data)
+
+        # Consider the case where previous is None - this means head node
+        # Update new_node head with pointer to old head node
+        
+
+
 
     def remove_node(self, data):
         # removes node with given data
