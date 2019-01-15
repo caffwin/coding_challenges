@@ -34,6 +34,7 @@ class Node(object):
         # pointer = next
         self.data = data
         self.next = None
+        self.tail = None
 
 class LinkedList(object):
 
@@ -60,13 +61,31 @@ class LinkedList(object):
     def add_node_position(self, previous, data):
         # Inserts node after node with given data
         previous = None
-        new_node = Node(data)
 
         # Consider the case where previous is None - this means head node
         # Update new_node head with pointer to old head node
         
+        if previous is None:
+            print("No previous node!")
+            return
 
+        new_node = Node(data)
+        new_node.next = previous.next
+        previous.next = new_node
 
+    def add_to_end(self, data)
+
+        current = self.head
+        new_node = Node(data)
+
+        # Consider the case where the list is empty - new node will be the "end" & head
+        if self.head is None:
+            self.head = new_node
+
+        if self.tail is not None:
+            self.tail.next = new_node
+
+        self.tail = new_node
 
     def remove_node(self, data):
         # removes node with given data
