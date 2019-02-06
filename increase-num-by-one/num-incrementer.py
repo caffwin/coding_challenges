@@ -34,7 +34,12 @@
 
 # Pseudocode:
 
-# empty list check, return empty array
+# Empty list check, return empty array
+# If list contains only zeros, it's the same thing as just one zero
+# the output is just 1
+# Check to see if list has any invalid characters, if yes then throw an error
+
+# If the list is valid, then..
 # Check through each number in passed array, from last int to first int
 
 # if current integer is between 0 and 8:
@@ -57,7 +62,6 @@ def add_one(lst):
             return "This list contains a non integer"
         i += 1
 
-        
         # try:
         #     char = int(lst[i])
         # except ValueError:
@@ -66,6 +70,12 @@ def add_one(lst):
     # Tests for sum zero before any changes are made to the original list
     if sum(lst) == 0:
         return [1]
+
+    # Check through list to make sure each letter is less than 10:
+    for i in range(0, len(lst)):
+        if lst[i] >= 10:
+            return "One or more integers is greater than ten, please re-enter characters as a single digit"
+        i += 1
 
     for num in lst[::-1]:
         if num >= 0 and num < 9:
@@ -101,6 +111,7 @@ print("999 > ", add_one([9, 9, 9]))
 print("5279 > ", add_one([5, 2, 7, 9]))
 print("abc > ", add_one(["a", "b", "c"]))
 print("a4 > ", add_one(["a", 4]))
+print("12 > ", add_one([12]))
 # print(add_one([3, "b", 9])) # This case breaks one of the if statements, fix later
 
 # Constraints (Space Constraints, Time Constraints)
