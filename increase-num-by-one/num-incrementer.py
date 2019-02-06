@@ -1,4 +1,5 @@
 # Given a positive integer represented by an array of digits, add one to that number and return it in the form of a list.
+# Modify list in place - don't make a new list!
 
 # Input: Array of integers
 # Output: Array of integers
@@ -51,78 +52,56 @@ def add_one(lst):
     if lst == []:
         return []
 
-    for i in range(1, len(lst)):
+    for i in range(0, len(lst)):
         if not str(lst[i]).isdigit():
             return "This list contains a non integer"
+        i += 1
 
+        
         # try:
         #     char = int(lst[i])
         # except ValueError:
         #     print("Sorry, this charater is not an integer\n")
 
-    # TypeError: unsupported operand type(s) for +: 'int' and 'str' when
-    # print(add_one(["b", 6, 9])) was entered for testing this edge case:
+    # Tests for sum zero before any changes are made to the original list
     if sum(lst) == 0:
         return [1]
 
     for num in lst[::-1]:
-        # print("Num is: " + str(num))
         if num >= 0 and num < 9:
-            # num += 1
             inc_num = num + 1
-            print("New incremented num: " + str(num))
             lst[-1] = inc_num
-            return "Output number is: " + str(lst)
+            return str(lst)
 
         else: 
-            # Enter this loop if the number is 9
-            # 9 > 0 and the next number increments by one
-            # [5, 2, 8, 0]
-
-            print("Else statement entered: " + str(num))
-
-            # Already know that the last number is a 9
-            # Change the 9 to a 0, and check next number
-
-            # ---------
-            # If next number is also 9, change to zero and continue searching
-            # If not, increment by 1 
-            # ---------
-
-            # Do this until hitting len[-(list_length)]
-            # If the last number is also a 9, change that to a zero append 1 to the beginning
-            # Return list
-
             for i in range(1, len(lst) + 1):
-                print("i is: ", i)
-                print(lst[-i])
                 lst[-i] = 0
 
-                # print("Second last digit: ", str(lst[-2]))
                 # If next number is NOT a 9, increment next num
                 # and print out the rest of the list
 
                 while i < list_length:
-                    print("i in while loop: ", i)
-
                     # Covers case where next number does not affect rest of list
-                    # Number is 0-8 
                     if lst[-(i+1)] >= 0 and lst[-(i+1)] < 9:
                         lst[-(i+1)] += 1      
-                        return "Remainder of list: ", str(lst)
-                        5
+                        return str(lst)
+                    
                     i += 1
-                    print("While loop printed list: ", lst)
 
-
-
-            # How to tell if the end of the list is reached?
+            # How to tell if the end of the list is reached and all 9s changed to 0?
+            # If sum is zero even after going through each character
+            # This works because entering this loop means the sum of the list was not
+            # zero to begin with, but became zero after changes were made
             if sum(lst) == 0:
                 lst.insert(0, 1)
 
-            return "Output number is: " + str(lst)
+            return str(lst)
             
-print(add_one([1, 0, 0]))
+print("999 > ", add_one([9, 9, 9]))
+print("5279 > ", add_one([5, 2, 7, 9]))
+print("abc > ", add_one(["a", "b", "c"]))
+print("a4 > ", add_one(["a", 4]))
+# print(add_one([3, "b", 9])) # This case breaks one of the if statements, fix later
 
 # Constraints (Space Constraints, Time Constraints)
 # O(1) - not allowed to use other data structures
