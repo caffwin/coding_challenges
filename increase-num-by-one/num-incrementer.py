@@ -3,8 +3,6 @@
 # Input: Array of integers
 # Output: Array of integers
 
-
-
 # Test Cases
 # Invalid inputs
 # Empty Array
@@ -23,43 +21,47 @@
 # Input: [9, 9, 9]
 # Output: [1, 0, 0, 0]
 
-
 # Input: [0, 0, 0, 0]
 # Output: [1]
     
 # Input: [5, 2, 7, 9]
 # Output: [5, 2, 8, 0]
 
-    
 # Input: ["a"]
 # Output: "That is not a valid number"
 
-# add_to_array(lst)
-# add_to_array([5, 2, 7, 1]) 
+
+# Pseudocode:
+
+# empty list check, return empty array
+# Check through each number in passed array, from last int to first int
+
+# if current integer is between 0 and 8:
+# increment integer by one, and return new list
+
+# if number is 9, change number to zero, and check next number
+# second last number increments
+# if we've reached the end of the list in reverse, append "1" to lst[0]
 
 
 def add_one(lst):
-    
-    # empty list check, return empty array
-    
-    
-    # Check through each number in passed array, from last int to first int
-    
-    # if current integer is between 0 and 8:
-    # increment integer by one, and return new list
 
-    # if number is 9, change number to zero, and check next number
-    # second last number increments
-    # if we've reached the end of the list in reverse, append "1" to lst[0]
-    
     list_length = len(lst)
 
     if lst == []:
         return []
-    
-    print("Original number is: " + str(lst))
-    print("len of lst is: ", list_length)
 
+    for i in range(1, len(lst)):
+        if not str(lst[i]).isdigit():
+            return "This list contains a non integer"
+
+        # try:
+        #     char = int(lst[i])
+        # except ValueError:
+        #     print("Sorry, this charater is not an integer\n")
+
+    if sum(lst) == 0:
+        return [1]
 
     for num in lst[::-1]:
         # print("Num is: " + str(num))
@@ -110,10 +112,7 @@ def add_one(lst):
 
             return "Output number is: " + str(lst)
             
-        
-    
-
-print(add_one([9, 9]))
+print(add_one(["a", "b"]))
 
 # Constraints (Space Constraints, Time Constraints)
 # O(1) - not allowed to use other data structures
