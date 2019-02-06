@@ -60,12 +60,14 @@ def add_one(lst):
         # except ValueError:
         #     print("Sorry, this charater is not an integer\n")
 
+    # TypeError: unsupported operand type(s) for +: 'int' and 'str' when
+    # print(add_one(["b", 6, 9])) was entered for testing this edge case:
     if sum(lst) == 0:
         return [1]
 
     for num in lst[::-1]:
         # print("Num is: " + str(num))
-        if num > 0 and num < 9:
+        if num >= 0 and num < 9:
             # num += 1
             inc_num = num + 1
             print("New incremented num: " + str(num))
@@ -94,25 +96,33 @@ def add_one(lst):
             for i in range(1, len(lst) + 1):
                 print("i is: ", i)
                 print(lst[-i])
-                # lst[-1], lst[-2], lst[-3]
                 lst[-i] = 0
+
+                # print("Second last digit: ", str(lst[-2]))
+                # If next number is NOT a 9, increment next num
+                # and print out the rest of the list
 
                 while i < list_length:
                     print("i in while loop: ", i)
 
-                    if lst[-(i+1)] > 0 and lst[-(i+1)] < 9:
-                        lst[-(i+1)] += 1                     
-
+                    # Covers case where next number does not affect rest of list
+                    # Number is 0-8 
+                    if lst[-(i+1)] >= 0 and lst[-(i+1)] < 9:
+                        lst[-(i+1)] += 1      
+                        return "Remainder of list: ", str(lst)
+                        5
                     i += 1
-                    # How to tell if the end of the list is reached?
                     print("While loop printed list: ", lst)
 
+
+
+            # How to tell if the end of the list is reached?
             if sum(lst) == 0:
                 lst.insert(0, 1)
 
             return "Output number is: " + str(lst)
             
-print(add_one(["a", "b"]))
+print(add_one([1, 0, 0]))
 
 # Constraints (Space Constraints, Time Constraints)
 # O(1) - not allowed to use other data structures
