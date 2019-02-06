@@ -52,28 +52,68 @@ def add_one(lst):
     # second last number increments
     # if we've reached the end of the list in reverse, append "1" to lst[0]
     
+    list_length = len(lst)
+
     if lst == []:
         return []
     
     print("Original number is: " + str(lst))
+    print("len of lst is: ", list_length)
+
 
     for num in lst[::-1]:
-        print("Num is: " + str(num))
+        # print("Num is: " + str(num))
         if num > 0 and num < 9:
             # num += 1
             inc_num = num + 1
             print("New incremented num: " + str(num))
             lst[-1] = inc_num
-            return lst
+            return "Output number is: " + str(lst)
+
         else: 
+            # Enter this loop if the number is 9
+            # 9 > 0 and the next number increments by one
+            # [5, 2, 8, 0]
+
             print("Else statement entered: " + str(num))
-            num = 0
-            return lst
+
+            # Already know that the last number is a 9
+            # Change the 9 to a 0, and check next number
+
+            # ---------
+            # If next number is also 9, change to zero and continue searching
+            # If not, increment by 1 
+            # ---------
+
+            # Do this until hitting len[-(list_length)]
+            # If the last number is also a 9, change that to a zero append 1 to the beginning
+            # Return list
+
+            for i in range(1, len(lst) + 1):
+                print("i is: ", i)
+                print(lst[-i])
+                # lst[-1], lst[-2], lst[-3]
+                lst[-i] = 0
+
+                while i < list_length:
+                    print("i in while loop: ", i)
+
+                    if lst[-(i+1)] > 0 and lst[-(i+1)] < 9:
+                        lst[-(i+1)] += 1                     
+
+                    i += 1
+                    # How to tell if the end of the list is reached?
+                    print("While loop printed list: ", lst)
+
+            if sum(lst) == 0:
+                lst.insert(0, 1)
+
+            return "Output number is: " + str(lst)
             
         
     
 
-print(add_one([5, 2, 7, 8]))
+print(add_one([9, 9]))
 
 # Constraints (Space Constraints, Time Constraints)
 # O(1) - not allowed to use other data structures
