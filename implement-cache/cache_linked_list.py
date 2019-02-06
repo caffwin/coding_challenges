@@ -106,3 +106,13 @@ class LinkedList(object):
                 return True
             current = current.next
         return False
+
+    def remove_this_node(self, data):
+        # Traverse until finding node with data 
+        current = self.head
+        
+        while current is not None:
+            if current.data == data:
+                return True
+            current = current.next
+        return False
