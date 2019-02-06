@@ -71,9 +71,9 @@ def add_one(lst):
     if sum(lst) == 0:
         return [1]
 
-    # Check through list to make sure each letter is less than 10:
+    # Check through list to make sure each letter is a single digit (less than 10):
     for i in range(0, len(lst)):
-        if lst[i] >= 10:
+        if not lst[i] < 10:
             return "One or more integers is greater than ten, please re-enter characters as a single digit"
         i += 1
 
@@ -126,3 +126,30 @@ print("12 > ", add_one([12]))
 
 # Input: [5, 2, 7, 1]
 # Output: [5, 2, 7, 2]
+
+
+# Simpler method using casting, returning new list rather than modifying original list
+
+def inc_num_with_casting(lst_nums):
+
+    str_lst = ""
+
+    for num in lst_nums:
+        str_lst += str(num)
+
+    int_lst = int(str_lst)
+    int_lst += 1
+    str_lst_two = str(int_lst)
+
+    new_lst = []
+
+    for num in str_lst_two:
+        new_lst.append(num)
+
+    return new_lst
+
+# print("string of list: ", str_lst)
+# print("int of list plus one: ", int_lst)
+# print("New list of ints: ", new_lst)
+
+print(inc_num_with_casting([9, 9, 9]))
