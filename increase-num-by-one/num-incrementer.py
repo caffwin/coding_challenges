@@ -65,7 +65,7 @@ def add_one(lst):
         # try:
         #     char = int(lst[i])
         # except ValueError:
-        #     print("Sorry, this charater is not an integer\n")
+        #     print("Sorry, this list contains a non-integer")
 
     # Tests for sum zero before any changes are made to the original list
     if sum(lst) == 0:
@@ -147,9 +147,5 @@ def inc_num_with_casting(lst_nums):
         new_lst.append(num)
 
     return new_lst
-
-# print("string of list: ", str_lst)
-# print("int of list plus one: ", int_lst)
-# print("New list of ints: ", new_lst)
 
 print(inc_num_with_casting([9, 9, 9]))

@@ -16,7 +16,6 @@ def is_perm_palindrome(str):
         else:
             pal_dict[char] += 1
 
-    # return pal_dict
     odd_counter = 0
 
     # We know that something is a palindrome if all values are even with the exception of one
@@ -29,9 +28,31 @@ def is_perm_palindrome(str):
         return False
     else:
         return True
-# Write the same function to check if a string is a palindrome
 
-# def is_palindrome(str):
 
+# Write the same function to check if a string is a palindrome:
+
+def is_palindrome(str):
+    # checks if a string is a palindrome
+    index_forward = 0
+    index_backward = len(str) - 1
+
+    list_string = []
+
+    for char in str:
+        list_string.append(char)
+
+    print("Index backward: ", index_backward)
+
+    while index_forward <= index_backward:
+        if list_string[index_forward] == list_string[index_backward]:
+            index_forward += 1
+            index_backward -= 1
+        else:
+            return False
+
+    return True
 
 print(is_perm_palindrome("tacocat"))
+print(is_palindrome("civil"))
+print(is_palindrome("civic"))
